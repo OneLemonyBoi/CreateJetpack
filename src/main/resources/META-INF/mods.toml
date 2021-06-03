@@ -13,12 +13,12 @@ license="MIT License"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="examplemod" #mandatory
+modId="createjetpack" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 version="${file.jarVersion}" #mandatory
  # A display name for the mod
-displayName="Example Mod" #mandatory
-credits="Hello world1" #optional
+displayName="Create Jetpack" #mandatory
+credits="When the Imposter is Sus :flushed:" #optional
 # A text field displayed in the mod UI
 authors="Yummy Lemons" #optional
 # The description text for the mod (multi line!) (#mandatory)
@@ -26,7 +26,7 @@ description='''
 punny joke
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.examplemod]] #optional
+[[dependencies.createjetpack]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -38,7 +38,7 @@ punny joke
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
 # Here's another dependency
-[[dependencies.examplemod]]
+[[dependencies.createjetpack]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.16.5,)"

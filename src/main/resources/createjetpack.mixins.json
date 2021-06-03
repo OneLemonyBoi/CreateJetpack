@@ -1,12 +1,11 @@
 {
   "required": true,
-  "package": "onelemonyboi.examplemod.mixin",
+  "package": "onelemonyboi.createjetpack.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "examplemod.refmap.json",
   "mixins": [
   ],
   "client":[
-    "ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
