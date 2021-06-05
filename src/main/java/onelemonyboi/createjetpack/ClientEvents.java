@@ -1,46 +1,36 @@
 package onelemonyboi.createjetpack;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.simibubi.create.foundation.tileEntity.behaviour.ValueBox;
-import com.simibubi.create.foundation.utility.outliner.Outline;
-import com.simibubi.create.foundation.utility.outliner.Outliner;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import org.lwjgl.glfw.GLFW;
-
-import java.util.Iterator;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.fml.LogicalSide;
+import onelemonyboi.createjetpack.content.JetpackAction;
+import onelemonyboi.createjetpack.content.JetpackItem;
+import onelemonyboi.createjetpack.content.MovementAction;
+import onelemonyboi.createjetpack.packets.Packets;
+import onelemonyboi.createjetpack.packets.PlayerJetpackPacket;
+import onelemonyboi.createjetpack.packets.PlayerMovementPacket;
 
 public class ClientEvents {
-    public static void onKeyInput(InputEvent.KeyInputEvent event) {
-        PlayerEntity player = Minecraft.getInstance().player;
-        if (player == null) {
+    public static void onKeyInput(TickEvent.PlayerTickEvent event) {
+        if (event.side == LogicalSide.SERVER) {
             return;
         }
-        if (event.getKey() != GLFW.GLFW_KEY_SPACE) {
+
+        if (!(event.player.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() instanceof JetpackItem)) {
             return;
         }
-//        if (Minecraft.getInstance().currentScreen != null) {
-//            Packets.INSTANCE.sendToServer(new PlayerHoveringPacket(false));
-//        }
 
-            ItemStack chestItemStack = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
+        Packets.INSTANCE.sendToServer(new PlayerJetpackPacket(JetpackAction.ACTIVATE, KeyBindings.activateJetpack.isKeyDown()));
+        Packets.INSTANCE.sendToServer(new PlayerJetpackPacket(JetpackAction.HOVERING, KeyBindings.toggleHover.isActive()));
+        Packets.INSTANCE.sendToServer(new PlayerMovementPacket(MovementAction.JUMP, Minecraft.getInstance().gameSettings.keyBindJump.isKeyDown()));
+        Packets.INSTANCE.sendToServer(new PlayerMovementPacket(MovementAction.SNEAK, Minecraft.getInstance().gameSettings.keyBindSneak.isKeyDown()));
+    }
 
-        if (chestItemStack.getItem() instanceof JetpackItem && event.getAction() == GLFW.GLFW_PRESS) {
-            CreateJetpack.LOGGER.info("Space Pressed");
-            Packets.INSTANCE.sendToServer(new PlayerHoveringPacket(true));
-        }
-        else if (event.getAction() == GLFW.GLFW_RELEASE) {
-            CreateJetpack.LOGGER.info("Space Released");
-            Packets.INSTANCE.sendToServer(new PlayerHoveringPacket(false));
-        }
+    public static void clientStuff() {
+        MinecraftForge.EVENT_BUS.addListener(ClientEvents::onKeyInput);
+        MinecraftForge.EVENT_BUS.addListener(JetpackOverlayRenderer::jetpackOverlayRenderer);
+        KeyBindings.register();
     }
 }

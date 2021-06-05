@@ -1,14 +1,14 @@
-package onelemonyboi.createjetpack;
+package onelemonyboi.createjetpack.content;
 
-import com.simibubi.create.AllBlocks;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
+import onelemonyboi.createjetpack.ModRegistry;
+import onelemonyboi.createjetpack.content.ChargerBlock;
+import onelemonyboi.createjetpack.content.CreativeTab;
 
 import java.util.function.Supplier;
 

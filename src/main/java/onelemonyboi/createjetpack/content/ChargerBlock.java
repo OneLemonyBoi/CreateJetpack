@@ -1,8 +1,6 @@
-package onelemonyboi.createjetpack;
+package onelemonyboi.createjetpack.content;
 
 import com.simibubi.create.content.contraptions.base.HorizontalKineticBlock;
-import com.simibubi.create.content.contraptions.components.clock.CuckooClockBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.InventoryHelper;
@@ -18,6 +16,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import onelemonyboi.createjetpack.TEList;
 
 public class ChargerBlock extends HorizontalKineticBlock {
     public ChargerBlock(Properties properties) {

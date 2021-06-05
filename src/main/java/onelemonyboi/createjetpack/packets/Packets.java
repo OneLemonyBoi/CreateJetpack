@@ -1,8 +1,9 @@
-package onelemonyboi.createjetpack;
+package onelemonyboi.createjetpack.packets;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
+import onelemonyboi.createjetpack.CreateJetpack;
 
 public class Packets {
     private static final String CHANNEL_NAME = "main";
@@ -16,10 +17,16 @@ public class Packets {
 
     public static void main() {
         INSTANCE.registerMessage(1,
-                PlayerHoveringPacket.class,
-                PlayerHoveringPacket::encode,
-                PlayerHoveringPacket::decode,
-                PlayerHoveringPacket::handle
+                PlayerJetpackPacket.class,
+                PlayerJetpackPacket::encode,
+                PlayerJetpackPacket::decode,
+                PlayerJetpackPacket::handle
+        );
+
+        INSTANCE.registerMessage(2, PlayerMovementPacket.class,
+                PlayerMovementPacket::encode,
+                PlayerMovementPacket::decode,
+                PlayerMovementPacket::handle
         );
     }
 }

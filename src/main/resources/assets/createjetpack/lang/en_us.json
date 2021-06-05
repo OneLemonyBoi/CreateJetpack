@@ -1,0 +1,9 @@
+{
+  "createjetpack.category.jetpack": "Jetpack Settings",
+  "createjetpack.key.trigger": "Activate Jetpack",
+  "createjetpack.key.hover": "Activate Hover Mode",
+  "createjetpack.text.chargingitem": "Item Currently Charging: ",
+  "createjetpack.text.charge": "Charge: ",
+  "item.createjetpack.jetpack": "Jetpack",
+  "item.createjetpack.charger": "Charger"
+}

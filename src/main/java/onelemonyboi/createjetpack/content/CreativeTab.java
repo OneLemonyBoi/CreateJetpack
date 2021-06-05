@@ -1,7 +1,8 @@
-package onelemonyboi.createjetpack;
+package onelemonyboi.createjetpack.content;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import onelemonyboi.createjetpack.CreateJetpack;
 
 public class CreativeTab extends ItemGroup {
     private static final CreativeTab INSTANCE = new CreativeTab();

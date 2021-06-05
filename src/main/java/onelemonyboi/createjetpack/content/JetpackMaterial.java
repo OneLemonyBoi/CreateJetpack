@@ -1,4 +1,4 @@
-package onelemonyboi.createjetpack;
+package onelemonyboi.createjetpack.content;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
